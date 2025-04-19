@@ -1,0 +1,15 @@
+# Desactivar la normalización de finales de línea para todos los archivos
+* text=auto eol=lf
+
+# Mantener los binarios sin cambios
+*.png binary
+*.jpg binary
+*.gif binary
+*.woff binary
+*.woff2 binary
+
+# Especificar tipos de archivos comunes
+*.css text eol=lf
+*.js text eol=lf
+*.html text eol=lf
+*.json text eol=lf

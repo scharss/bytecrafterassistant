@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bytecrafter</title>
+    <link href="{{ url_for('static', filename='css/tailwind.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/github-dark.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/katex.min.css') }}">
+    <script src="{{ url_for('static', filename='js/highlight.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/marked.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/katex.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/auto-render.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <div class="app-title-container">
+            <button class="toggle-sidebar-btn" onclick="toggleSidebar()" title="Toggle Sidebar">
+                <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+            <div class="app-title">Bytecrafter</div>
+        </div>
+        <div class="sidebar-content">
+            <button class="new-chat-btn" onclick="createNewChat()">
+                <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                Nuevo chat
+            </button>
+            <div class="chat-history" id="chat-history">
+                <!-- Chat history items will be added here -->
+            </div>
+            <div id="pdf-info" class="pdf-info" style="display: none;">
+                <div class="pdf-status"></div>
+                <div class="chunk-navigation">
+                    <button onclick="prevChunk()" class="chunk-nav-btn" disabled>
+                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+                        </svg>
+                        Anterior
+                    </button>
+                    <span class="chunk-indicator"></span>
+                    <button onclick="nextChunk()" class="chunk-nav-btn" disabled>
+                        Siguiente
+                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="chunk-context"></div>
+            </div>
+        </div>
+        <div class="sidebar-footer">
+            <div class="current-model" id="current-model">
+                Modelo: <strong>cargando...</strong>
+            </div>
+            <button class="config-button" onclick="openConfig()">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
+                </svg>
+                Configuración
+            </button>
+        </div>
+    </div>
+
+    <button class="show-sidebar-btn" onclick="toggleSidebar()" title="Show Sidebar">
+        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+    </button>
+
+    <div class="main-content" id="mainContent">
+        <div class="chat-container" id="chat-container">
+            <!-- Messages will be added here -->
+        </div>
+        <div class="input-section">
+            <div class="input-container" ondragover="handleDragOver(event)" ondrop="handleDrop(event)" onpaste="handlePaste(event)">
+                <textarea id="message-input" rows="1" placeholder="Envía un mensaje..." style="max-height: 200px;"></textarea>
+                <input type="file" id="pdf-upload" accept=".pdf" style="display: none;">
+                <input type="file" id="image-upload" accept="image/*" style="display: none;">
+                <button class="image-upload-button" id="image-upload-button" title="Subir Imagen" onclick="document.getElementById('image-upload').click()">
+                    <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                </button>
+                <button class="upload-button" id="upload-button" title="Subir PDF" onclick="document.getElementById('pdf-upload').click()">
+                    <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                </button>
+                <button class="send-button" id="send-button">
+                    <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 rotate-90"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Configuración -->
+    <div id="configModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Configuración</h2>
+                <button class="modal-close" onclick="closeConfig()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="config-section">
+                    <h3 class="config-section-title" id="languageTitle">Language</h3>
+                    <div class="language-selector">
+                        <select id="languageSelect" class="model-select" onchange="changeLanguage(this.value)">
+                            <option value="en">English</option>
+                            <option value="es">Español</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="config-section">
+                    <h3 class="config-section-title" id="themeTitle">Theme</h3>
+                    <div class="theme-selector">
+                        <select id="themeSelect" class="model-select" onchange="changeTheme(this.value)">
+                            <option value="dark" id="darkOption">Dark</option>
+                            <option value="light" id="lightOption">Light</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="config-section">
+                    <h3 class="config-section-title" id="availableModelsTitle">Available AI Models</h3>
+                    <div id="modelList" class="model-list">
+                        <!-- Models will be loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
