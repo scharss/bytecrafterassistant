@@ -41,7 +41,7 @@ The application uses Docker to work consistently across all platforms. Follow th
 
 2. **Clone/Download the Repository**:
    ```powershell
-   git clone https://github.com/your-username/your-repository
+   git clone https://github.com/scharss/bytecrafterassistant.git
    cd bytecrafterassistant
    ```
    Or download and extract the repository ZIP
@@ -53,7 +53,7 @@ The application uses Docker to work consistently across all platforms. Follow th
 
 4. **Download an AI Model**:
    ```powershell
-   docker exec -it [DIRECTORY_NAME]-ollama-1 bash
+   docker exec -it bytecrafterassistant-ollama-1 bash
    ollama pull qwen2.5-coder:7b
    exit
    ```
@@ -69,7 +69,7 @@ The application uses Docker to work consistently across all platforms. Follow th
 
 2. **Clone/Download the Repository**:
    ```bash
-   git clone https://github.com/your-username/your-repository
+   git clone https://github.com/scharss/bytecrafterassistant.git
    cd bytecrafterassistant
    ```
    Or download and extract the repository ZIP
@@ -81,7 +81,7 @@ The application uses Docker to work consistently across all platforms. Follow th
 
 4. **Download an AI Model**:
    ```bash
-   docker exec -it [DIRECTORY_NAME]-ollama-1 bash
+   docker exec -it bytecrafterassistant-ollama-1 bash
    ollama pull qwen2.5-coder:7b
    exit
    ```
@@ -117,7 +117,7 @@ The application uses Docker to work consistently across all platforms. Follow th
 
 3. **Clone/Download the Repository**:
    ```bash
-   git clone https://github.com/your-username/your-repository
+   git clone https://github.com/scharss/bytecrafterassistant.git
    cd bytecrafterassistant
    ```
    Or download and extract the repository ZIP
@@ -129,7 +129,7 @@ The application uses Docker to work consistently across all platforms. Follow th
 
 5. **Download an AI Model**:
    ```bash
-   docker exec -it [DIRECTORY_NAME]-ollama-1 bash
+   docker exec -it bytecrafterassistant-ollama-1 bash
    ollama pull qwen2.5-coder:7b
    exit
    ```
