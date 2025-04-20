@@ -55,6 +55,8 @@ The application uses Docker to work consistently across all platforms. Follow th
    ```powershell
    docker exec -it bytecrafterassistant-ollama-1 bash
    ollama pull qwen2.5-coder:7b
+   ollama pull deepseek-r1:7b
+   ollama pull deepseek-r1:8b
    exit
    ```
 
@@ -83,6 +85,8 @@ The application uses Docker to work consistently across all platforms. Follow th
    ```bash
    docker exec -it bytecrafterassistant-ollama-1 bash
    ollama pull qwen2.5-coder:7b
+   ollama pull deepseek-r1:7b
+   ollama pull deepseek-r1:8b
    exit
    ```
 
@@ -131,6 +135,8 @@ The application uses Docker to work consistently across all platforms. Follow th
    ```bash
    docker exec -it bytecrafterassistant-ollama-1 bash
    ollama pull qwen2.5-coder:7b
+   ollama pull deepseek-r1:7b
+   ollama pull deepseek-r1:8b
    exit
    ```
 
