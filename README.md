@@ -60,6 +60,8 @@ The application uses Docker to work consistently across all platforms. Follow th
    ollama pull qwen2.5-coder:7b
    ollama pull deepseek-r1:7b
    ollama pull deepseek-r1:8b
+   ollama pull deepseek-r1:14b
+   ollama pull deepseek-r1:32b
    exit
    ```
 
@@ -93,6 +95,8 @@ The application uses Docker to work consistently across all platforms. Follow th
    ollama pull qwen2.5-coder:7b
    ollama pull deepseek-r1:7b
    ollama pull deepseek-r1:8b
+   ollama pull deepseek-r1:14b
+   ollama pull deepseek-r1:32b
    exit
    ```
 
@@ -146,6 +150,8 @@ The application uses Docker to work consistently across all platforms. Follow th
    ollama pull qwen2.5-coder:7b
    ollama pull deepseek-r1:7b
    ollama pull deepseek-r1:8b
+   ollama pull deepseek-r1:14b
+   ollama pull deepseek-r1:32b
    exit
    ```
 
