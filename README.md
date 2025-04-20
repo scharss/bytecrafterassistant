@@ -1,4 +1,4 @@
-# Bytecrafter assistant - Local AI Chat with Docker
+# Bytecrafter Assistant - Local AI Chat with Docker
 
 A local AI chat web application that uses Ollama models, with PDF processing, image OCR, and multiple conversations, all available in a cross-platform Docker implementation.
 
