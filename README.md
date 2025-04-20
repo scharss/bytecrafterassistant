@@ -54,6 +54,7 @@ The application uses Docker to work consistently across all platforms. Follow th
 4. **Download an AI Model**:
    ```powershell
    docker exec -it bytecrafterassistant-ollama-1 bash
+   ollama pull deepseek-r1:1.5b
    ollama pull qwen2.5-coder:7b
    ollama pull deepseek-r1:7b
    ollama pull deepseek-r1:8b
@@ -84,6 +85,7 @@ The application uses Docker to work consistently across all platforms. Follow th
 4. **Download an AI Model**:
    ```bash
    docker exec -it bytecrafterassistant-ollama-1 bash
+   ollama pull deepseek-r1:1.5b
    ollama pull qwen2.5-coder:7b
    ollama pull deepseek-r1:7b
    ollama pull deepseek-r1:8b
@@ -134,6 +136,7 @@ The application uses Docker to work consistently across all platforms. Follow th
 5. **Download an AI Model**:
    ```bash
    docker exec -it bytecrafterassistant-ollama-1 bash
+   ollama pull deepseek-r1:1.5b
    ollama pull qwen2.5-coder:7b
    ollama pull deepseek-r1:7b
    ollama pull deepseek-r1:8b
