@@ -218,7 +218,7 @@ This project is licensed under the terms specified in the LICENSE file.
 
 ---
 
-For more information or support, visit [the project repository](https://github.com/your-username/your-repository).
+For more information or support, visit [Bytecrafter](https://bytecrafter.co/).
 
 
-La aplicación estará disponible en `http://localhost:5000`. Puedes detener el contenedor con `Ctrl+C` en la terminal donde se está ejecutando o usando `docker-compose down`.
+The application will be available at `http://localhost:5000`. You can stop the container with `Ctrl+C` in the terminal where it's running or by using `docker-compose down`.
