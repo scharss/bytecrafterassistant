@@ -2,7 +2,7 @@
 
 A local AI chat web application that uses Ollama models, with PDF processing, image OCR, and multiple conversations, all available in a cross-platform Docker implementation.
 
-![LibreAI](https://bytecrafter.co/wp-content/uploads/2025/03/LOGO2.png)
+![LibreAI](https://raw.githubusercontent.com/scharss/bytecrafterassistant1/0fc4ef174dbb37d9c0032b854a7cd40997dc9770/assistant/LOGO2.png)
 
 ## 🌟 Key Features
 
